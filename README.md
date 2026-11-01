@@ -3,7 +3,12 @@
 Apresentação interativa para a reunião entre Lukas e Leonardo (01/11/2026). O objetivo é que uma
 pessoa entenda o fluxo de desenvolvimento da LK vendo-o funcionar, não lendo parágrafos.
 
-## Executar
+## Abrir (forma mais simples)
+
+Dê um duplo clique em `index.html` (abre no navegador padrão) ou arraste o arquivo para uma janela do Chrome ou Edge. Pressione `F` para tela cheia.
+Não exige internet nem instalação.
+
+## Executar com servidor local (opcional)
 
 Não há build nem dependências. Qualquer servidor estático serve:
 

@@ -23,7 +23,7 @@
 <main id="deck">
 
 <!-- 01 · ABERTURA -->
-<section class="slide s1" data-title="Abertura" data-max="3" aria-labelledby="t1">
+<section class="slide s1" data-title="Abertura" data-max="2" aria-labelledby="t1">
   <div class="wrap">
     <div>
       <p class="eyebrow ac" style="--i:0" data-decrypt>Reunião entre sócios · 01.11.2026</p>
@@ -93,7 +93,7 @@
 </section>
 
 <!-- 04 · IDEIA VIRA ISSUE -->
-<section class="slide s4" data-title="Ideia vira issue" data-max="7" aria-labelledby="t4">
+<section class="slide s4" data-title="Ideia vira issue" data-max="6" aria-labelledby="t4">
   <div class="wrap">
     <div style="display:grid;gap:1.1rem">
       <p class="eyebrow ac" style="--i:0" data-decrypt>Uma ideia vira uma issue</p>
@@ -101,7 +101,8 @@
       <div class="card idea ac" style="--i:2">
         <span class="idea__tag">Ideia inicial</span>
         <q>Precisamos permitir que um novo usuário crie sua conta na LK.</q>
-        <div class="why rv" data-from="7">
+        <p class="note"><b>Issue</b> é a tarefa escrita no GitHub, com o que entra, o que fica fora e como provar que está pronta.</p>
+        <div class="why rv" data-from="6">
           <h4>Sem especificação</h4>
           <p>o código cresce sem limite de escopo</p>
           <p>ninguém consegue provar que funciona</p>
@@ -114,15 +115,15 @@
       <div class="gh" role="group" aria-label="Issue em construção">
         <div class="gh__head">
           <b>Cadastro de usuário com e-mail verificado</b><span class="no">#—</span>
-          <span class="pill pill--ok rv" data-from="7" style="margin-left:auto">Pronta para execução</span>
+          <span class="pill pill--ok rv" data-from="6" style="margin-left:auto">Pronta para execução</span>
         </div>
         <div class="gh__body" id="issueBody">
           <div class="sec rv" data-from="1"><h4>Problema</h4><p>Não existe um caminho próprio para uma pessoa nova criar conta nos produtos da LK.</p></div>
           <div class="sec rv" data-from="2"><h4>Objetivo</h4><p>Permitir o cadastro de um usuário com e-mail verificado.</p></div>
           <div class="sec rv" data-from="3"><h4>Escopo</h4><p>Formulário · validação · e-mail de confirmação · conta na base central.</p></div>
-          <div class="sec rv" data-from="4"><h4>Exclusões</h4><p class="x">Login com Google (trilha própria) · recuperação de senha.</p></div>
-          <div class="sec rv" data-from="5"><h4>Aceite</h4><ul><li>Pessoa nova cria a conta e recebe o e-mail</li><li>E-mail inválido ou repetido mostra erro claro</li><li>Papéis do LK System interno seguem intactos</li></ul></div>
-          <div class="sec rv" data-from="6"><h4>Dependências</h4><p>SMTP confiável · base central de usuários.</p></div>
+          <div class="sec rv" data-from="3"><h4>Exclusões</h4><p class="x">Login com Google (trilha própria) · recuperação de senha.</p></div>
+          <div class="sec rv" data-from="4"><h4>Aceite</h4><ul><li>Pessoa nova cria a conta e recebe o e-mail</li><li>E-mail inválido ou repetido mostra erro claro</li><li>Papéis do LK System interno seguem intactos</li></ul></div>
+          <div class="sec rv" data-from="5"><h4>Dependências</h4><p>SMTP confiável · base central de usuários.</p></div>
         </div>
       </div>
     </div>
@@ -133,7 +134,7 @@
 <section class="slide s5" data-title="Uso de IA" data-max="5" aria-labelledby="t5">
   <div class="wrap">
     <p class="eyebrow ac" style="--i:0" data-decrypt>Como uso inteligência artificial</p>
-    <h2 class="h2 ac" id="t5" style="--i:1">A IA acelera a execução. <em>A decisão continua humana.</em></h2>
+    <h2 class="h2 ac" id="t5" style="--i:1">A IA acelera a execução.<br /><em>A decisão continua humana.</em></h2>
     <div class="flow5 ac" style="--i:2">
       <div class="card actor spot" data-lit-at="1" data-on-from="2">
         <span class="role">Estratégia</span><h3>ChatGPT · Mia</h3>
@@ -205,6 +206,7 @@
           <div class="pn" data-p="6"><div class="card"><ul class="checks" id="ck6"></ul></div></div>
           <div class="pn" data-p="7"><div class="card done"><div class="ev"><div><b>Pull request</b>revisado e vinculado à issue</div><div><b>Checks</b>lint, tipos, testes e build verdes</div><div><b>Critérios</b>3 de 3 demonstrados</div></div><div class="warnbox">Estado: <b>Validado (G1)</b>. Ainda não publicado: faltam homologação (G2) e publicação (G3).</div></div></div>
         </div>
+        <p class="cap"><b>Em português</b><span id="cap7"></span></p>
       </div>
     </div>
   </div>
@@ -237,7 +239,7 @@
       <div><div class="big-n" id="s9n"></div><div class="big-l" id="s9l"></div><div class="state" id="s9s"></div></div>
       <div><ul class="tl" id="s9tl"></ul><div class="s9links" id="s9lk"></div></div>
     </div>
-    <p class="note ac" style="--i:4">Recortes do acompanhamento até 31/10/2026. Os estados podem mudar depois dessa data; nada aqui supõe publicação sem GO registrado.</p>
+    <p class="note ac" style="--i:4"><b>Migration</b>: alteração na estrutura do banco de dados · <b>Seed</b>: dados fictícios de teste · <b>Papéis</b>: níveis de acesso de cada usuário. Recortes até 31/10/2026; os estados podem mudar depois.</p>
   </div>
 </section>
 
@@ -274,7 +276,7 @@
     <div class="prios rv" data-from="2">
       <div class="card"><b>01</b>Concluir e publicar Clientes V2 após o GO</div>
       <div class="card"><b>02</b>Fechar os gates do LK Identity</div>
-      <div class="card"><b>03</b>Consolidar Project, CI e runners</div>
+      <div class="card"><b>03</b>Consolidar Project, CI e as máquinas de teste (runners)</div>
       <div class="card"><b>04</b>Replicar o método em novos clientes</div>
     </div>
     <p class="endq rv" data-from="2">Léo, com esse fluxo você acompanha o trabalho, participa das decisões e sabe o que realmente está pronto.</p>

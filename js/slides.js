@@ -47,8 +47,7 @@
   /* ---------- 01 · Abertura ---------- */
   const heroSteps = [
     [cmd('lk estado --entrega cadastro-usuario')],
-    [out('ideia          ✓ documentada', 'ok'), out('issue          ✓ com critérios de aceite', 'ok')],
-    [out('pull request   ✓ revisado', 'ok'), out('ci             ✓ verde', 'ok')],
+    [out('ideia          ✓ documentada', 'ok'), out('issue          ✓ com critérios de aceite', 'ok'), out('pull request   ✓ revisado', 'ok'), out('ci             ✓ verde', 'ok')],
     [out('homologação    … aguardando GO', 'wait'), out('produção       — ainda não publicada', 'dim'), out('', 'dim'), out('# CI verde não é o mesmo que entregue.', 'dim')],
   ];
   on(1, async (step, info) => {
@@ -93,7 +92,7 @@
     ['Implementação', 'Card pronto para executar', 'Código escrito em branch isolada, dentro do escopo', 'Claude Code · Git', 'Commits e Pull Request aberto', 'Mudança proposta para revisão'],
     ['Validação', 'Pull Request aberto', 'Testes, tipos, revisão do diff e CI', 'CI do GitHub · testes automatizados', 'Checks verdes e revisão registrada', 'PR elegível para merge'],
     ['Homologação', 'Versão elegível', 'Cenários reais em ambiente adequado, com papéis e erros', 'Ambiente de homologação', 'Checkpoint com GO / NO-GO', 'Autorização para publicar'],
-    ['Publicação', 'GO registrado', 'Backup quando aplicável, deploy, smoke test e monitoramento', 'Pipeline de publicação', 'Verificação após publicar', 'Entrega concluída e registrada'],
+    ['Publicação', 'GO registrado', 'Backup quando aplicável, publicação, teste rápido depois de publicar e monitoramento', 'Pipeline de publicação', 'Verificação após publicar', 'Entrega concluída e registrada'],
   ];
   const track3 = buildTrack('#track3', F3.map((f) => f[0]));
   on(3, (step) => {
@@ -155,7 +154,18 @@
     '}',
   ];
   const CK = ['Lint', 'Verificação de tipos', 'Testes unitários', 'Build'];
+  const CAP7 = [
+    'Começamos pelo próximo card prioritário.',
+    'Card é a tarefa. Antes de mexer no código, confirmamos o que entra e como provar que está pronta.',
+    'Branch é uma cópia de trabalho isolada: o código principal não é afetado.',
+    'Aqui o código é escrito, só o que o card pede.',
+    'Os testes automáticos conferem cada critério de aceite.',
+    'O Pull Request (PR) propõe a mudança para revisão, ligado ao card.',
+    'O CI roda as verificações sozinho. Se algo falha, a entrega é barrada.',
+    'O card só muda de estado com evidência. Ainda faltam homologar e publicar.',
+  ];
   on(7, async (step, info) => {
+    $('#cap7').textContent = CAP7[step];
     const run = info.run, anim = info.animate && !reduce.matches;
     $$('#rail7 li').forEach((li, k) => { li.dataset.s = step > k + 1 ? 'done' : step === k + 1 ? 'act' : 'todo'; });
     $('#k7s').textContent = PILL[step]; $('#k7s').className = 'pill ' + PILLC[step];
@@ -261,7 +271,7 @@
     { c: 'run', k: 'LK Identity', t: 'Cadastro central', ev: 'Cadastro, login e SMTP com testes', nx: 'Avaliar integração e homologação por gate', who: 'Lukas · direção técnica' },
     { c: 'dec', k: 'LK System', t: 'Publicação de Clientes V2', ev: 'Homologação local: 26 migrations e 54 combinações de papéis sem violações', nx: 'Registrar o GO e publicar', who: 'Em conjunto · autorização de publicação' },
     { c: 'blk', k: 'LK Identity', t: 'Google OIDC', ev: 'Trilha própria de segurança e rollout', nx: 'Fechar os gates de segurança antes de avançar', who: 'Em conjunto · publicação sensível' },
-    { c: 'todo', k: 'Plataforma', t: 'Project, CI e runners', ev: 'Prioridade registrada para o próximo ciclo', nx: 'Consolidar Project, CI e runners', who: 'Lukas · direção técnica' },
+    { c: 'todo', k: 'Plataforma', t: 'Project, CI e runners', ev: 'Prioridade registrada para o próximo ciclo', nx: 'Consolidar Project, CI e runners (as máquinas que rodam os testes)', who: 'Lukas · direção técnica' },
     { c: 'todo', k: 'Processo', t: 'Método em novos clientes', ev: 'Proposta do próximo ciclo', nx: 'Replicar o fluxo nos serviços que vendermos', who: 'Em conjunto · compromissos com clientes' },
     { c: 'ok', k: 'LK Wallet', t: 'Migration 0013', ev: 'Executada em produção com backup e checagens depois de executar', nx: 'Manter como referência de entrega controlada', who: 'Concluído' },
   ];

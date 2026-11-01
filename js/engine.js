@@ -149,7 +149,11 @@
   function decrypt(el) {
     if (!el.dataset.orig) el.dataset.orig = el.textContent;
     const txt = el.dataset.orig;
-    el.textContent = txt;
+    // Leitores de tela leem o texto real; o embaralhado é só visual (aria-hidden).
+    el.innerHTML = '<span class="sr"></span><span class="dx" aria-hidden="true"></span>';
+    el.firstChild.textContent = txt;
+    const dx = el.lastChild;
+    dx.textContent = txt;
     if (reduce.matches) return;
     const id = (el._d = (el._d || 0) + 1);
     let f = 0;
@@ -159,8 +163,8 @@
       const shown = Math.floor(f / 1.6);
       let out = '';
       for (let k = 0; k < txt.length; k++) out += k < shown || txt[k] === ' ' ? txt[k] : GLYPHS[(Math.random() * GLYPHS.length) | 0];
-      el.textContent = out;
-      if (shown < txt.length) setTimeout(tick, 28); else el.textContent = txt;
+      dx.textContent = out;
+      if (shown < txt.length) setTimeout(tick, 28); else dx.textContent = txt;
     })();
   }
 
