@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#07070a" />
+<title>LK Technologies Brasil | Como desenvolvemos software</title>
+<meta name="description" content="Experiência interativa do fluxo de desenvolvimento da LK Technologies Brasil, para alinhamento entre Lukas e Leonardo." />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="vignette" aria-hidden="true"></div>
+
+<header class="top">
+  <a class="brand" href="#1" aria-label="Voltar à abertura">
+    <span class="brand__mono">LK<i>.</i></span>
+    <span class="brand__txt">TECHNOLOGIES <b>BRASIL</b></span>
+  </a>
+  <span class="where" id="where" aria-hidden="true"></span>
+</header>
+
+<main id="deck">
+
+<!-- 01 · ABERTURA -->
+<section class="slide s1" data-title="Abertura" data-max="3" aria-labelledby="t1">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow ac" style="--i:0" data-decrypt>Reunião entre sócios · 01.11.2026</p>
+      <h1 class="h1 ac" id="t1" style="--i:1; margin-top:1.4rem">Como a LK<br /><em>desenvolve software</em><br />hoje.</h1>
+      <p class="lead ac" style="--i:2">Da ideia à entrega comprovada.</p>
+      <p class="who ac" style="--i:3"><span>Lukas Alexandre Rosa</span><span>Leonardo</span></p>
+    </div>
+    <div class="term-wrap ac" style="--i:3">
+      <div class="term" role="img" aria-label="Demonstração ilustrativa: lista de estados de uma entrega, onde a homologação ainda aguarda GO">
+        <div class="term__bar"><i></i><i></i><i></i><span>estado-da-entrega</span><em class="tag-s">demonstração</em></div>
+        <div class="term__body" id="heroTerm"></div>
+      </div>
+      <p class="note">Ilustração. Cada linha ganha um estado só quando existe evidência.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · POR QUE MUDAMOS -->
+<section class="slide s2" data-title="Por que mudamos" data-max="2" aria-labelledby="t2">
+  <div class="wrap">
+    <p class="eyebrow ac" style="--i:0" data-decrypt>Por que mudamos</p>
+    <h2 class="h2 ac" id="t2" style="--i:1">Organizar o processo muda <em>o que conseguimos enxergar.</em></h2>
+    <div class="cmp ac" style="--i:2">
+      <div class="card pane pane--antes" data-lit-at="0" data-dim-at="1">
+        <div class="pane__h"><b>ANTES</b><span>Demanda chega, execução com pouca formalização</span></div>
+        <div class="chaos" aria-hidden="true">
+          <span class="chip" style="left:2%;top:8%;--r:-4deg;--d:0">conversa</span>
+          <span class="chip" style="left:38%;top:0%;--r:3deg;--d:1.2">pedido</span>
+          <span class="chip" style="left:68%;top:18%;--r:-2deg;--d:2.1">ajuste</span>
+          <span class="chip" style="left:14%;top:52%;--r:5deg;--d:.7">código</span>
+          <span class="chip" style="left:52%;top:58%;--r:-5deg;--d:1.8">correção</span>
+          <span class="chip" style="left:80%;top:62%;--r:3deg;--d:2.6">entrega?</span>
+          <span class="q" style="left:30%;top:34%">?</span><span class="q" style="left:62%;top:40%">?</span><span class="q" style="left:44%;top:84%">?</span>
+        </div>
+        <p class="pane__f">Informação dispersa, decisões difíceis de rastrear, visibilidade limitada.</p>
+      </div>
+      <div class="card pane pane--hoje" data-lit-from="1" data-dim-until="0">
+        <div class="pane__h"><b>HOJE</b><span>Demanda documentada, vinculada e com evidência</span></div>
+        <div class="chain" aria-hidden="true">
+          <span class="chip">demanda</span><i class="lnk"></i><span class="chip">issue</span><i class="lnk"></i><span class="chip">PR</span><i class="lnk"></i><span class="chip">CI</span><i class="lnk"></i><span class="chip">entrega</span>
+        </div>
+        <p class="pane__f">Prioridade registrada, implementação ligada a uma issue, qualidade comprovada.</p>
+      </div>
+    </div>
+    <div class="card qa rv" data-from="2">
+      <div class="q-h">Pergunta</div><div class="q-h">Antes</div><div class="q-h">Hoje</div>
+      <div class="k">Onde está o escopo?</div><div class="b">Numa conversa</div><div class="a">Na issue, com critérios de aceite</div>
+      <div class="k">Quem decidiu o quê?</div><div class="b">Difícil de reconstruir</div><div class="a">Registrado no histórico</div>
+      <div class="k">Está pronto?</div><div class="b">Sem como provar</div><div class="a">Testes, PR e homologação mostram</div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · FLUXO COMPLETO -->
+<section class="slide s3" data-title="Fluxo completo" data-max="7" aria-labelledby="t3">
+  <div class="wrap">
+    <p class="eyebrow ac" style="--i:0" data-decrypt>Fluxo completo · 8 etapas</p>
+    <h2 class="h2 ac" id="t3" style="--i:1">Uma demanda percorre <em>oito etapas</em> até a entrega.</h2>
+    <div class="track ac" id="track3" style="--i:2" role="group" aria-label="Etapas do fluxo; selecione uma">
+      <i class="track-fill"></i>
+    </div>
+    <div class="card stage-card spot ac" style="--i:3" id="det3" aria-live="polite">
+      <div class="ph"><span class="ph__n" id="d3n"></span><span class="ph__t" id="d3t"></span><span class="ph__back">Se falhar, a tarefa volta e a correção fica registrada ↩</span></div>
+      <div class="fields" id="d3f"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · IDEIA VIRA ISSUE -->
+<section class="slide s4" data-title="Ideia vira issue" data-max="7" aria-labelledby="t4">
+  <div class="wrap">
+    <div style="display:grid;gap:1.1rem">
+      <p class="eyebrow ac" style="--i:0" data-decrypt>Uma ideia vira uma issue</p>
+      <h2 class="h2 ac" id="t4" style="--i:1; font-size:2.2rem">Não começamos <em>escrevendo código.</em></h2>
+      <div class="card idea ac" style="--i:2">
+        <span class="idea__tag">Ideia inicial</span>
+        <q>Precisamos permitir que um novo usuário crie sua conta na LK.</q>
+        <div class="why rv" data-from="7">
+          <h4>Sem especificação</h4>
+          <p>o código cresce sem limite de escopo</p>
+          <p>ninguém consegue provar que funciona</p>
+          <p>os bloqueios aparecem tarde</p>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid;gap:0.7rem; --i:3" class="ac">
+      <span class="tag-demo">Exemplo didático · não é uma issue real</span>
+      <div class="gh" role="group" aria-label="Issue em construção">
+        <div class="gh__head">
+          <b>Cadastro de usuário com e-mail verificado</b><span class="no">#—</span>
+          <span class="pill pill--ok rv" data-from="7" style="margin-left:auto">Pronta para execução</span>
+        </div>
+        <div class="gh__body" id="issueBody">
+          <div class="sec rv" data-from="1"><h4>Problema</h4><p>Não existe um caminho próprio para uma pessoa nova criar conta nos produtos da LK.</p></div>
+          <div class="sec rv" data-from="2"><h4>Objetivo</h4><p>Permitir o cadastro de um usuário com e-mail verificado.</p></div>
+          <div class="sec rv" data-from="3"><h4>Escopo</h4><p>Formulário · validação · e-mail de confirmação · conta na base central.</p></div>
+          <div class="sec rv" data-from="4"><h4>Exclusões</h4><p class="x">Login com Google (trilha própria) · recuperação de senha.</p></div>
+          <div class="sec rv" data-from="5"><h4>Aceite</h4><ul><li>Pessoa nova cria a conta e recebe o e-mail</li><li>E-mail inválido ou repetido mostra erro claro</li><li>Papéis do LK System interno seguem intactos</li></ul></div>
+          <div class="sec rv" data-from="6"><h4>Dependências</h4><p>SMTP confiável · base central de usuários.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · IA -->
+<section class="slide s5" data-title="Uso de IA" data-max="5" aria-labelledby="t5">
+  <div class="wrap">
+    <p class="eyebrow ac" style="--i:0" data-decrypt>Como uso inteligência artificial</p>
+    <h2 class="h2 ac" id="t5" style="--i:1">A IA acelera a execução. <em>A decisão continua humana.</em></h2>
+    <div class="flow5 ac" style="--i:2">
+      <div class="card actor spot" data-lit-at="1" data-on-from="2">
+        <span class="role">Estratégia</span><h3>ChatGPT · Mia</h3>
+        <p>Consolida contexto, pesquisa, planeja e escreve a especificação.</p>
+      </div>
+      <div class="conn" data-hot-from="2" id="c1"><span>escopo<br>definido</span><i class="pk"></i></div>
+      <div class="card actor spot" data-lit-at="2" data-on-from="3">
+        <span class="role">Método</span><h3>DDAE</h3>
+        <p>Investiga alternativas e sustenta decisões técnicas.</p><span class="opt">QUANDO APLICÁVEL</span>
+      </div>
+      <div class="conn" data-hot-from="3"><span>decisão<br>justificada</span><i class="pk"></i></div>
+      <div class="card actor spot" data-lit-at="3" data-on-from="4">
+        <span class="role">Execução</span><h3>Claude Code</h3>
+        <p>Executa uma tarefa delimitada: lê o repositório, implementa e roda verificações.</p>
+      </div>
+      <div class="conn" data-hot-from="4"><span>diff +<br>testes</span><i class="pk"></i></div>
+      <div class="card actor actor--human spot" data-lit-at="4" data-on-from="5">
+        <span class="role">Responsabilidade</span><h3>Lukas</h3>
+        <p>Orienta, decide, revisa riscos e valida as evidências.</p>
+      </div>
+    </div>
+    <p class="fb rv" data-from="4">Se a evidência não convence, o trabalho volta: ajustar escopo, reexecutar, revisar.</p>
+    <div class="card verdict rv" data-from="5"><span class="big">Regra</span><span>A IA <em>acelera</em> pesquisa, código e verificação — não substitui <em>julgamento nem responsabilidade</em> pela entrega.</span></div>
+  </div>
+</section>
+
+<!-- 06 · GITHUB -->
+<section class="slide s6" data-title="GitHub e rastreabilidade" data-max="5" aria-labelledby="t6">
+  <div class="wrap">
+    <p class="eyebrow ac" style="--i:0" data-decrypt>GitHub · organização e rastreabilidade</p>
+    <h2 class="h2 ac" id="t6" style="--i:1">Cada entrega tem <em>endereço e histórico.</em></h2>
+    <div class="track ac" id="track6" style="--i:2; --n:6" role="group" aria-label="Hierarquia no GitHub; selecione um elemento"><i class="track-fill"></i></div>
+    <div class="card stage-card spot ac" style="--i:3" aria-live="polite">
+      <div>
+        <div class="ph"><span class="ph__n" id="d6n"></span><span class="ph__t" id="d6t"></span></div>
+        <div class="kv" id="d6kv"></div>
+      </div>
+      <div style="display:grid;gap:0.5rem;align-content:center">
+        <span class="tag-demo">Exemplo ilustrativo</span>
+        <div class="mock" id="d6m"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 · DIA A DIA -->
+<section class="slide s7" data-title="Meu dia a dia" data-max="7" aria-labelledby="t7">
+  <div class="wrap">
+    <div style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap">
+      <div style="display:grid;gap:0.7rem">
+        <p class="eyebrow ac" style="--i:0" data-decrypt>Meu dia a dia desenvolvendo</p>
+        <h2 class="h2 ac" id="t7" style="--i:1; font-size:2.1rem; max-width:none">Uma issue avança, <em>passo a passo.</em></h2>
+      </div>
+      <span class="tag-demo ac" style="--i:2; margin-left:auto">Simulação didática · comandos e logs ilustrativos, não são uma execução real</span>
+    </div>
+    <div class="sim ac" style="--i:3">
+      <ol class="card rail" id="rail7">
+        <li><b>1</b>Selecionar a tarefa</li><li><b>2</b>Criar a branch</li><li><b>3</b>Desenvolver</li><li><b>4</b>Executar testes</li><li><b>5</b>Abrir o PR</li><li><b>6</b>Verificar o CI</li><li><b>7</b>Registrar o resultado</li>
+      </ol>
+      <div class="simmain">
+        <div class="card kcard" id="k7"><span class="no">card</span><span class="ti">Cadastro de usuário com e-mail verificado</span><span class="pill pill--gold" id="k7s">Pronto para executar</span></div>
+        <div class="panes">
+          <div class="pn on" data-p="0"><div class="idle card"><b>Próximo card prioritário</b><span>Avance com → para iniciar a simulação.</span></div></div>
+          <div class="pn" data-p="1"><div class="card crit"><h4>Lê o card e isola o escopo</h4><ul id="crit1"><li><span class="bx">✓</span>Pessoa nova cria a conta e recebe o e-mail</li><li><span class="bx">✓</span>E-mail inválido ou repetido mostra erro claro</li><li><span class="bx">✓</span>Papéis do LK System interno seguem intactos</li></ul></div></div>
+          <div class="pn" data-p="2"><div class="term"><div class="term__bar"><i></i><i></i><i></i><span>terminal · git</span><em class="tag-s">simulação</em></div><div class="term__body" id="tm2"></div></div></div>
+          <div class="pn" data-p="3"><div class="term"><div class="term__bar"><i></i><i></i><i></i><span>editor · src/signup.ts</span><em class="tag-s">exemplo</em></div><div class="code"><pre id="cd3"></pre><div class="callout"><div><b>Critério</b>E-mail inválido mostra erro claro</div><div><b>Escopo</b>Só validação. Login com Google fica fora.</div></div></div></div></div>
+          <div class="pn" data-p="4"><div class="term"><div class="term__bar"><i></i><i></i><i></i><span>terminal · testes</span><em class="tag-s">saída simulada</em></div><div class="term__body" id="tm4"></div></div></div>
+          <div class="pn" data-p="5"><div class="card prc"><h4>Cadastro: criar conta com e-mail verificado <span class="pill pill--ok">Aberto</span></h4><div class="br"><code>feat/cadastro-usuario</code> → <code>main</code></div><ul><li>Fecha a issue do card (vínculo explícito)</li><li>Diff pequeno, dentro do escopo</li><li>Testes e critérios de aceite descritos</li></ul></div></div>
+          <div class="pn" data-p="6"><div class="card"><ul class="checks" id="ck6"></ul></div></div>
+          <div class="pn" data-p="7"><div class="card done"><div class="ev"><div><b>Pull request</b>revisado e vinculado à issue</div><div><b>Checks</b>lint, tipos, testes e build verdes</div><div><b>Critérios</b>3 de 3 demonstrados</div></div><div class="warnbox">Estado: <b>Validado (G1)</b>. Ainda não publicado: faltam homologação (G2) e publicação (G3).</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · GATES -->
+<section class="slide s8" data-title="Como sabemos que está pronto" data-max="4" aria-labelledby="t8">
+  <div class="wrap" style="gap:1.1rem">
+    <p class="eyebrow ac" style="--i:0" data-decrypt>Como sabemos que está pronto</p>
+    <h2 class="h2 ac" id="t8" style="--i:1; font-size:2.2rem; max-width:none">Três gates. <em>CI verde é só o primeiro.</em></h2>
+    <div class="ladder ac" id="ladder8" style="--i:2" role="list" aria-label="Estados de uma entrega"></div>
+    <div class="gates ac" id="gates8" style="--i:3"></div>
+    <div class="gbottom ac" style="--i:4">
+      <div class="card logbox"><div class="term__body" id="log8" style="background:transparent"></div></div>
+      <div class="card fixrow">
+        <p id="fixTxt"></p>
+        <button class="btn rv" data-act="next" data-at="1">Corrigir</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 09 · CASOS REAIS -->
+<section class="slide s9" data-title="Casos reais" data-max="2" aria-labelledby="t9">
+  <div class="wrap">
+    <p class="eyebrow ac" style="--i:0" data-decrypt>Casos reais da LK</p>
+    <h2 class="h2 ac" id="t9" style="--i:1">O método aplicado: <em>três estados diferentes.</em></h2>
+    <div class="tabs ac" id="tabs9" style="--i:2" role="group" aria-label="Projetos"></div>
+    <div class="card s9det spot ac" style="--i:3" aria-live="polite">
+      <div><div class="big-n" id="s9n"></div><div class="big-l" id="s9l"></div><div class="state" id="s9s"></div></div>
+      <div><ul class="tl" id="s9tl"></ul><div class="s9links" id="s9lk"></div></div>
+    </div>
+    <p class="note ac" style="--i:4">Recortes do acompanhamento até 31/10/2026. Os estados podem mudar depois dessa data; nada aqui supõe publicação sem GO registrado.</p>
+  </div>
+</section>
+
+<!-- 10 · COMO LEONARDO ACOMPANHA -->
+<section class="slide s10" data-title="Como Leonardo acompanha" data-max="5" aria-labelledby="t10">
+  <div class="wrap" style="gap:1.1rem">
+    <p class="eyebrow ac" style="--i:0" data-decrypt>Transparência entre sócios</p>
+    <h2 class="h2 ac" id="t10" style="--i:1; font-size:2.3rem; max-width:none">Leonardo acompanha <em>sem precisar perguntar.</em></h2>
+    <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap; --i:2" class="ac">
+      <span class="tag-demo">Visão ilustrativa do GitHub Project · com base nos checkpoints de 31/10</span>
+      <div class="qs"><span>O que estamos fazendo?</span><span>O que está bloqueado?</span><span>O que falta decidir?</span><span>Qual evidência sustenta o status?</span></div>
+    </div>
+    <div class="board ac" id="board10" style="--i:3"></div>
+    <div class="card cdet spot ac" style="--i:4" id="cdet10" aria-live="polite"></div>
+  </div>
+</section>
+
+<!-- 11 · ENCERRAMENTO -->
+<section class="slide s11" data-title="Encerramento" data-max="2" aria-labelledby="t11">
+  <div class="wrap">
+    <p class="eyebrow ac" style="--i:0" data-decrypt>O próximo ciclo da LK</p>
+    <div class="asm ac" style="--i:1" aria-hidden="true">
+      <i class="rail-l"></i>
+      <span class="chip" style="--k:0;--x:4;--y:20;--r:-6deg;--ax:3">necessidade</span>
+      <span class="chip" style="--k:1;--x:18;--y:70;--r:5deg;--ax:14">pesquisa</span>
+      <span class="chip" style="--k:2;--x:30;--y:10;--r:-3deg;--ax:24">especificação</span>
+      <span class="chip" style="--k:3;--x:44;--y:66;--r:6deg;--ax:36.5">planejamento</span>
+      <span class="chip" style="--k:4;--x:54;--y:14;--r:-5deg;--ax:48">implementação</span>
+      <span class="chip" style="--k:5;--x:66;--y:72;--r:4deg;--ax:61">validação</span>
+      <span class="chip" style="--k:6;--x:78;--y:8;--r:-4deg;--ax:72">homologação</span>
+      <span class="chip" style="--k:7;--x:88;--y:64;--r:3deg;--ax:85">publicação</span>
+    </div>
+    <h2 class="h2 ac" id="t11" style="--i:2">Nosso desenvolvimento precisa ser <em>compreensível, rastreável e verificável.</em></h2>
+    <div class="prios rv" data-from="2">
+      <div class="card"><b>01</b>Concluir e publicar Clientes V2 após o GO</div>
+      <div class="card"><b>02</b>Fechar os gates do LK Identity</div>
+      <div class="card"><b>03</b>Consolidar Project, CI e runners</div>
+      <div class="card"><b>04</b>Replicar o método em novos clientes</div>
+    </div>
+    <p class="endq rv" data-from="2">Léo, com esse fluxo você acompanha o trabalho, participa das decisões e sabe o que realmente está pronto.</p>
+    <p class="endbrand rv" data-from="2">LK<i>.</i><small>TECHNOLOGIES BRASIL</small></p>
+  </div>
+</section>
+
+</main>
+
+<footer class="bar" role="toolbar" aria-label="Controles da apresentação">
+  <div class="ctl-group">
+    <span class="ctl-label">Slides</span>
+    <div class="gnav">
+      <button class="ibtn" id="gPrev" aria-label="Slide anterior">‹</button>
+      <div class="dots" id="dots"></div>
+      <button class="ibtn" id="gNext" aria-label="Próximo slide">›</button>
+    </div>
+  </div>
+  <div class="snav" id="snav" hidden>
+    <span class="ctl-label">Etapas</span>
+    <button class="ibtn" id="sPrev" aria-label="Etapa anterior">‹</button>
+    <div class="pips" id="pips" aria-hidden="true"></div>
+    <button class="ibtn" id="sNext" aria-label="Próxima etapa">›</button>
+    <button class="ibtn" id="sReset" aria-label="Reiniciar esta demonstração" title="Reiniciar (R)">↻</button>
+  </div>
+  <div class="bar-r">
+    <div class="keys"><kbd>→</kbd> <kbd>Espaço</kbd> avançam · <kbd>←</kbd> voltam<br /><kbd>Shift</kbd>+<kbd>←/→</kbd> troca de slide · <kbd>R</kbd> reinicia · <kbd>P</kbd> pausa · <kbd>F</kbd> tela cheia</div>
+    <button class="ibtn pause-b" id="bPause" aria-label="Pausar animações (P)" title="Pausar (P)">❚❚</button>
+    <button class="ibtn" id="bFull" aria-label="Tela cheia (F)" title="Tela cheia (F)">⛶</button>
+  </div>
+</footer>
+<div class="sr" id="live" aria-live="polite"></div>
+<noscript><p style="position:fixed;inset:5rem 2rem;color:#f3f0e7">Esta apresentação precisa de JavaScript.</p></noscript>
+
+<script src="js/engine.js"></script>
+<script src="js/slides.js"></script>
+</body>
+</html>
