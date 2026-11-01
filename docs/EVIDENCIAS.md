@@ -5,18 +5,25 @@ Ambientes: navegador embutido do Claude Code (Chromium) e **Microsoft Edge 156**
 
 ## Resultados
 
+Execução automatizada no **Microsoft Edge 156** (controlado por DevTools, eventos de teclado reais), já com todas as correções abaixo aplicadas.
+
 | Verificação | Resultado |
 |---|---|
-| Varredura de todos os estados (60 combinações slide/etapa, antes do enxugamento do ritmo) em **1366×768** e em **1920×1080** | Nenhum elemento visível fora do palco ou da janela |
-| Console do navegador, sessão de testes | Sem erros nem avisos |
-| Teclado (navegador embutido): `→`, `Espaço` percorrem as 8 etapas do slide 7 sem pular de slide; `←` volta e entra no slide anterior na última etapa; `Shift+←/→`, `Home`, `End`, `PageDown`, `R`, `P` | Confirmado |
-| Simulação do slide 7: código aparece linha a linha; checks de CI passam um a um | Confirmado |
-| Demonstrações repetíveis com `R` | Confirmado nos slides 1 e 7 (`R` volta à etapa 0; o código e o terminal rodam de novo) |
-| Inspeção visual no **Edge**, 1366×768: slides 4 (etapa 6), 7 (etapas 3, 4 e 7), 8, 9, 11 | Legíveis, sem sobreposição |
-| Inspeção visual no **Edge**, 1920×1080: slides 5, 8 e 10 | Legíveis, sem sobreposição |
-| `prefers-reduced-motion` no **Edge** (`--force-prefers-reduced-motion`): slides 1 e 7 | Conteúdo aparece completo e imediato, sem embaralhar texto |
-| Contraste calculado (WCAG): texto principal 16–18:1, texto secundário 7–8:1, dourado 8,6–9,6:1, verde/vermelho/âmbar ≥ 5,9:1, botão dourado com texto escuro 8,7:1 | Todos acima de 4,5:1 após ajuste do cinza das legendas |
-| Acessibilidade: botões escondidos não recebem mais foco do teclado; texto embaralhado fica `aria-hidden` e o texto real fica disponível a leitores de tela; região `aria-live` anuncia slide e etapa | Implementado; verificado por leitura de código |
+| Varredura de **todos os 58 estados** (slide/etapa) em **1366×768** e em **1920×1080**, incluindo checagem de corte horizontal e vertical | 0 problemas nos dois tamanhos |
+| Teclado: `→`, `Espaço`, `PageDown` avançam etapa a etapa dentro do slide 7 (7.0→7.1→7.2→7.3); `←` e `PageUp` voltam; `Shift+→/←` trocam de slide; `Home`, `End`, `R` | Conforme esperado |
+| `P` pausa e retoma | Confirmado |
+| **Tela cheia (`F`)**: entra e sai | **Confirmado no Edge** |
+| Demonstrações repetíveis: percorrer, `R`, percorrer de novo, comparar o resultado final (slides 1, 4, 7 e 8) | Idêntico nos quatro |
+| `prefers-reduced-motion` (emulado no Edge): transições de 0,001 s, código do slide 7 aparece completo na hora, cursor sem animação | Confirmado |
+| Inspeção visual no Edge, 1366×768: slides 1, 4, 7, 8, 9, 11; 1920×1080: slides 5, 8, 10 | Legíveis, sem sobreposição |
+| Contraste calculado (WCAG): texto principal 16–18:1, secundário 7–8:1, dourado 8,6–9,6:1, verde/vermelho/âmbar ≥ 5,9:1, botão dourado 8,7:1 | Todos acima de 4,5:1 |
+| Acessibilidade: `lang="pt-BR"`, landmarks `header`/`main`/`footer`, 0 botões sem nome, região `aria-live` que anuncia slide e etapa | Confirmado |
+| Console da página (Edge e navegador embutido) | Nenhum erro ou aviso da apresentação |
+
+Observações sobre o relatório automatizado:
+- Os avisos de console listados no relatório vêm de **extensões do próprio Edge** (`chrome-extension://...`, carteira, tradutor), não da apresentação.
+- A lista de "focáveis invisíveis" aparece só na etapa 0 dos slides 3, 6, 9 e 10 e é um **falso positivo**: o teste mediu 250 ms depois de abrir o slide, durante a animação de entrada, quando os botões ainda têm opacidade baixa. Eles são visíveis e utilizáveis logo depois.
+- A checagem "eyebrow sem embaralhar" marcou `false` porque o texto lido junta a cópia oculta para leitores de tela com a cópia visível. A tela mostra o texto correto (visto na captura em movimento reduzido).
 
 ## Defeitos encontrados e corrigidos nesta rodada
 
@@ -31,14 +38,9 @@ Ambientes: navegador embutido do Claude Code (Chromium) e **Microsoft Edge 156**
 Foram removidas 6 etapas (slide 1: de 4 para 3; slide 4: de 8 para 7) e adicionados glossários em português simples
 (issue, branch, PR, CI, migration, seed, papéis, runners). Com 58 estados, o roteiro soma cerca de 11 minutos.
 
-## Não verificado, ou verificado só em parte
+## Não verificado
 
-- **Varredura completa pós-correção:** depois dos ajustes finais (altura do código, foco, títulos), a varredura automática
-  de todos os estados **não foi refeita**. Uma execução completa no Edge foi interrompida a seu pedido. A correção do
-  código foi confirmada por medição direta (12 linhas, sem corte), e o restante só por inspeção visual pontual.
-- **Tela cheia (`F`)**: o painel de teste bloqueia a API (`Permissions check failed`). O teste com tecla real no Edge foi
-  interrompido antes de rodar. O código usa a API padrão `requestFullscreen`, mas **não foi comprovado em execução**.
-  Confirme com `F` antes da reunião.
-- **Teclado no Edge:** só o navegador embutido foi testado; o Edge só serviu para capturas e reduced-motion.
-- **Leitor de tela real**: não testado.
-- A varredura mede geometria; **não substitui um ensaio completo** no equipamento da reunião.
+- **Leitor de tela real** (NVDA, Narrador): não testado.
+- **Chrome** com teclado real: não executado; o motor é o mesmo do Edge, e o navegador embutido do app (Chromium) passou nos testes de teclado.
+- **Ensaio completo no equipamento da reunião** (projetor, resolução e escala do sistema): não substituível por teste automatizado.
+- A inspeção visual cobriu parte dos estados; a varredura automática cobre os 58 por geometria, mas não julga estética.
